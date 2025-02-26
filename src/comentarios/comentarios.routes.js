@@ -8,7 +8,7 @@ import { existePublicacionById, existeComentarioById } from '../helpers/db-valid
 const router = Router();
 
 router.get(
-    '/publicacion/:publicacionId',  
+    '/:id',  
     [
         validarJWT,
         check('publicacionId', 'No es un ID válido').isMongoId(),

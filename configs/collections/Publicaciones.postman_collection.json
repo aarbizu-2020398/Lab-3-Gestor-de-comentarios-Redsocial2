@@ -10,7 +10,13 @@
 			"name": "Agregar Publicacion",
 			"request": {
 				"method": "POST",
-				"header": [],
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YmY1MmI4YzhmZTdmMDUxNjM4MjVhNyIsInJvbGUiOiJBRE1JTl9ST0xFIiwiaWF0IjoxNzQwNTkyMTgxLCJleHAiOjE3NDA1OTU3ODF9.Ircae5WvB8KGCz_tNIjotROqF0LP4tkhTobn7kexaCU",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
 					"raw": "{\r\n    \"\":\"\"\r\n}",
@@ -44,7 +50,7 @@
 				"header": [
 					{
 						"key": "x-token",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YmU4OTU2MjU5ZmNlOGM1NjM1ZDNlYSIsInJvbGUiOiJBRE1JTl9ST0xFIiwiaWF0IjoxNzQwNTQwMjU3LCJleHAiOjE3NDA1NDM4NTd9.Nda2GKygkEGKSJr0GuKGTlHJWlULTUR37P_t_r8nf9I",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YmY1MmI4YzhmZTdmMDUxNjM4MjVhNyIsInJvbGUiOiJBRE1JTl9ST0xFIiwiaWF0IjoxNzQwNTkyMTgxLCJleHAiOjE3NDA1OTU3ODF9.Ircae5WvB8KGCz_tNIjotROqF0LP4tkhTobn7kexaCU",
 						"type": "text"
 					}
 				],
@@ -111,9 +117,27 @@
 		},
 		{
 			"name": "Listar Publicacion",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
 				"method": "GET",
-				"header": [],
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YmY1MmI4YzhmZTdmMDUxNjM4MjVhNyIsInJvbGUiOiJBRE1JTl9ST0xFIiwiaWF0IjoxNzQwNTkyMTgxLCJleHAiOjE3NDA1OTU3ODF9.Ircae5WvB8KGCz_tNIjotROqF0LP4tkhTobn7kexaCU",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
 				"url": {
 					"raw": "http://localhost:3040/gestor-opiniones/v1/publicaciones",
 					"protocol": "http",
