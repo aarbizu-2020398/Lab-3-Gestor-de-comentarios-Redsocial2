@@ -1,79 +1,62 @@
-<<<<<<< HEAD
 import express from 'express';
-import {register,login,getProfile,updateProfile,changePassword} from '../users/user.controller.js';
-import authMiddleware from '../middleware/authMiddleware.js';
-=======
-import { Router } from "express";
-import { check } from "express-validator";
-import { getUsers, getUserById, updateUser, deleteUser } from "./user.controller.js";
-import { existeUsuarioById } from "../helpers/db-validator.js";
-import { validarCampos } from "../middlewares/validar-campos.js";
-import { uploadProfilePicture } from "../middlewares/multer-upload.js";
-import { validarJWT } from "../middlewares/validar-jwt.js";
-import { tieneRole } from "../middlewares/validar-roles.js";
->>>>>>> 8cd83b1979552dd5fe30de6ed427bfbc6671f306
-
+import { User } from './user.model.js';
+import { validarJWT } from '../middlewares/validar-jwt.js';  
 const router = express.Router();
 
-
-<<<<<<< HEAD
-router.post('/register', register);
-router.post('/login', login);
-
-
-router.get('/', authMiddleware, getProfile);
-router.put('/:id', authMiddleware, updateProfile);
-router.put('/change-password', authMiddleware, changePassword);
-
-
-
-export default router;
-=======
-
-router.get("/", getUsers);
-
-
-router.get(
-    "/findUser/:id",
-    [
-      
-        check("id", "No es un ID válido").isMongoId(),
-        check("id").custom(existeUsuarioById),
-        validarCampos
-    ],
-    getUserById
-);
-
-
 router.put(
-    "/:id",
-    uploadProfilePicture.single("profilePicture"), 
-    [
-        
-        check("id", "No es un ID válido").isMongoId(),
-        check("id").custom(existeUsuarioById),
-        validarCampos
-    ],
-    updateUser
+  '/:id',
+  validarJWT,  
+  async (req, res) => {
+    const { id } = req.params;
+    const { username, email } = req.body;
+
+    if (req.user._id.toString() !== id) {
+      return res.status(403).json({ msg: 'No tienes permiso para actualizar este usuario' });
+    }
+
+    try {
+      const updatedUser = await User.findByIdAndUpdate(
+        id,
+        { username, email }, 
+        { new: true }
+      ).select('-password');  
+
+      if (!updatedUser) {
+        return res.status(404).json({ msg: 'Usuario no encontrado' });
+      }
+
+      res.status(200).json(updatedUser);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ msg: 'Error al actualizar el usuario', error: error.message });
+    }
+  }
 );
 
-
+// Ruta para eliminar un usuario
 router.delete(
-    "/:id",
-    [
+  '/:id',
+  validarJWT,  // Middleware que verifica el token
+  async (req, res) => {
+    const { id } = req.params;
 
-        validarJWT,
-        
+    // Verificar que el usuario sea el que está eliminando su cuenta
+    if (req.user._id.toString() !== id) {
+      return res.status(403).json({ msg: 'No tienes permiso para eliminar este usuario' });
+    }
 
-        tieneRole("ADMIN_ROLE", "VENTAS_ROLE"),
-        
-        
-        check("id", "No es un ID válido").isMongoId(),
-        check("id").custom(existeUsuarioById),
-        validarCampos
-    ],
-    deleteUser
+    try {
+      const deletedUser = await User.findByIdAndDelete(id);
+      if (!deletedUser) {
+        return res.status(404).json({ msg: 'Usuario no encontrado' });
+      }
+
+      res.status(200).json({ msg: 'Usuario eliminado correctamente' });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ msg: 'Error al eliminar el usuario', error: error.message });
+    }
+  }
 );
 
 export default router;
->>>>>>> 8cd83b1979552dd5fe30de6ed427bfbc6671f306

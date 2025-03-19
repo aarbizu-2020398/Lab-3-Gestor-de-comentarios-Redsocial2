@@ -1,5 +1,6 @@
 import jwt from 'jsonwebtoken';
-import User from '../users/user.model.js';
+import { User } from '../users/user.model.js';
+
 
 export const authMiddleware = async (req, res, next) => {
     const token = req.header('x-token');

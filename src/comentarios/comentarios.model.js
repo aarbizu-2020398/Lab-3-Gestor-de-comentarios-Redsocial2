@@ -1,31 +1,22 @@
-import { Schema, model } from "mongoose";
+import mongoose from 'mongoose';
 
-const ComentarioSchema = new Schema({
+const comentarioSchema = new mongoose.Schema({
     contenido: {
         type: String,
-        required: true,
+        required: [true, 'El contenido es obligatorio'],
     },
-
-    autor: {
-        type: Schema.Types.ObjectId,
-        ref: 'Usuario',
-        required: true
-    },
-
     publicacion: {
-        type: Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'Publicacion',
-        required: true
+        required: [true, 'La publicación es obligatoria'],
     },
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        required: [true, 'El usuario es obligatorio'],
+    },
+}, { timestamps: true });
 
-    estado: {
-        type: Boolean,
-        default: true,
-    }
-}, {
-    timestamps: true,
-    versionKey: false
-});
+const Comentario = mongoose.model('Comentario', comentarioSchema);
 
-
-export default model('Comentario', ComentarioSchema);
+export default Comentario;

@@ -10,8 +10,9 @@ dotenv.config();
 
 import authRoutes from '../src/auth/auth.routes.js';
 import postRoutes from '../src/publicaciones/publicaciones.routes.js'; 
-import commentRoutes from '../src/comentarios/comentarios.routes.js';
+import comentarioRoutes from '../src/comentarios/comentarios.routes.js';
 import categoriaRoutes from '../src/categories/categorias.routes.js';
+import usersRoutes from '../src/users/user.routes.js'
 import { createDefaultUsers } from '../src/users/user.controller.js'; 
 
 const middlewares = (app) => {
@@ -26,8 +27,9 @@ const middlewares = (app) => {
 const routes = (app) => {
     app.use("/gestor-opiniones/v1/auth", authRoutes);
     app.use("/gestor-opiniones/v1/publicaciones", postRoutes); 
-    app.use("/gestor-opiniones/v1/comment", commentRoutes);
+    app.use('/gestor-opiniones/v1/comments', comentarioRoutes);
     app.use("/gestor-opiniones/v1/categories", categoriaRoutes);
+    app.use("/gestor-opiniones/v1/users", usersRoutes);
 };
 
 
@@ -46,7 +48,7 @@ const conectarDB = async () => {
 
 export const initServer = async () => {
     const app = express();
-    const port = process.env.PORT || 3040;
+    const port = process.env.PORT || 3060;
 
     try {
         middlewares(app);

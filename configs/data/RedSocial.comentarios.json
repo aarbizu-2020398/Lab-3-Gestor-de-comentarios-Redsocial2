@@ -1,0 +1,19 @@
+[{
+  "_id": {
+    "$oid": "67da4873cad5cab26efca5ff"
+  },
+  "contenido": "Este es un comentario sobre la publicación.",
+  "publicacion": {
+    "$oid": "67da128ef32e206f44df93ca"
+  },
+  "user": {
+    "$oid": "67da19b97217b4c8b8558489"
+  },
+  "createdAt": {
+    "$date": "2025-03-19T04:30:43.103Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-19T04:30:43.103Z"
+  },
+  "__v": 0
+}]

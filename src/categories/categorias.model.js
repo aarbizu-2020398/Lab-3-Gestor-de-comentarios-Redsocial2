@@ -1,29 +1,19 @@
-import mongoose from 'mongoose';
+import { Schema, model } from 'mongoose';
 
-const categoriaSchema = new mongoose.Schema(
-    {
-        nombre: {
-            type: String,
-            required: true,
-            unique: true,  
-            trim: true,    
-        },
-        descripcion: {
-            type: String,
-            required: true,
-            trim: true,
-        },
-        estado: {
-            type: Boolean,
-            default: true,  
-        },
-    },
-    {
-        timestamps: true, 
-    }
-);
+const categoriaSchema = new Schema({
+  nombre: {
+    type: String,
+    required: [true, 'El nombre de la categoría es obligatorio'],
+    unique: true
+  },
+  descripcion: {
+    type: String,
+    required: [true, 'La descripción de la categoría es obligatoria']
+  },
+  estado: {
+    type: Boolean,
+    default: true
+  }
+});
 
-
-const Categoria = mongoose.model('Categoria', categoriaSchema);
-
-export default Categoria;
+export default model('Categoria', categoriaSchema);

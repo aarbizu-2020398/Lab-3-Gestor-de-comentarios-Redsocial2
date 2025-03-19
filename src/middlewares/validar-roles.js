@@ -18,3 +18,10 @@ export const tieneRole = (...roles) => {
  
     }
 }
+
+export const isAdmin = (req, res, next) => {
+    if (!req.user || req.user.role !== 'ADMIN_ROLE') {
+      return res.status(403).json({ msg: 'No tienes permisos para realizar esta acción' });
+    }
+    next();
+  };

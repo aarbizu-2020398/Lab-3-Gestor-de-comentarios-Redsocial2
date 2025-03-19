@@ -1,0 +1,54 @@
+[{
+  "_id": {
+    "$oid": "67da0b5441889e4ecc9860f8"
+  },
+  "titulo": "Avances en Los Montañas",
+  "contenido": "Amatitlan ha sobresalido",
+  "categoria": {
+    "$oid": "65f4e8b2c23d4f5e8e4f1a9c"
+  },
+  "comentarios": [],
+  "estado": true,
+  "createdAt": {
+    "$date": "2025-03-19T00:09:56.196Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-19T00:09:56.196Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67da1113f0b9b1f2ed7b8ecb"
+  },
+  "titulo": "Avances en Los Montañas",
+  "contenido": "Amatitlan ha sobresalido",
+  "categoria": {
+    "$oid": "65f4e8b2c23d4f5e8e4f1a9c"
+  },
+  "comentarios": [],
+  "estado": true,
+  "createdAt": {
+    "$date": "2025-03-19T00:34:27.931Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-19T00:34:27.931Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67da128ef32e206f44df93ca"
+  },
+  "titulo": "Avances de los Aviones",
+  "contenido": "La inteligencia artificial está evolucionando rápidamente.",
+  "categoria": {
+    "$oid": "67da1b72be2b63ba44c5d54f"
+  },
+  "comentarios": [],
+  "estado": true,
+  "createdAt": {
+    "$date": "2025-03-19T00:40:46.268Z"
+  },
+  "updatedAt": {
+    "$date": "2025-03-19T01:27:03.283Z"
+  }
+}]

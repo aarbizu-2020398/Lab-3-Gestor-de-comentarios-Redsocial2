@@ -1,27 +1,36 @@
 import { Router } from 'express';
-import { crearCategoria, obtenerCategorias, editarCategoria, eliminarCategoria } from '../categories/categorias.controller.js';
-
-import { authMiddleware, isAdmin } from '../middlewares/auth.middlewares.js';  
-import { validarCampos } from '../middlewares/validar-campos.js';  
-import { check } from 'express-validator';  
-import { existeCategoriaById } from '../helpers/db-validator.js';  
+import { obtenerCategorias, crearCategoria, editarCategoria, eliminarCategoria } from './categorias.controller.js';
+import { validarJWT } from '../middlewares/validar-jwt.js';
+import { isAdmin } from '../middlewares/validar-roles.js'; 
+import { check } from 'express-validator';
+import { validarCampos } from '../middlewares/validar-campos.js';
 
 const router = Router();
 
-router.get('/', authMiddleware, obtenerCategorias);
+router.get('/', validarJWT, obtenerCategorias);
 
 router.post(
-    '/',
-    authMiddleware, isAdmin,  
-    [
-        check('nombre', 'El nombre de la categoría es obligatorio').not().isEmpty(),  
-        validarCampos  
-    ],
-    crearCategoria  
+  '/',
+  validarJWT, isAdmin,
+  [
+    check('nombre', 'El nombre de la categoría es obligatorio').not().isEmpty(),
+    check('descripcion', 'La descripción de la categoría es obligatoria').not().isEmpty(),
+    validarCampos
+  ],
+  crearCategoria
 );
 
-router.put('/:id', authMiddleware, isAdmin, editarCategoria);
+router.put(
+  '/:id',
+  validarJWT, isAdmin,
+  [
+    check('nombre', 'El nombre de la categoría es obligatorio').not().isEmpty(),
+    check('descripcion', 'La descripción de la categoría es obligatoria').not().isEmpty(),
+    validarCampos
+  ],
+  editarCategoria
+);
 
-router.delete('/:id', authMiddleware, isAdmin, eliminarCategoria);
+router.delete('/:id', validarJWT, isAdmin, eliminarCategoria);
 
 export default router;

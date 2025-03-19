@@ -1,0 +1,18 @@
+[{
+  "_id": {
+    "$oid": "67da1b5fbe2b63ba44c5d54b"
+  },
+  "nombre": "Entretenimiento",
+  "descripcion": "Categoría para contenido de entretenimiento",
+  "estado": true,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67da1b72be2b63ba44c5d54f"
+  },
+  "nombre": "Tecnologia",
+  "descripcion": "Avances de Tecnologia",
+  "estado": true,
+  "__v": 0
+}]

@@ -1,28 +1,30 @@
+
 import mongoose from 'mongoose';
 
-const userSchema = new mongoose.Schema({
-    nombre: {
-        type: String,
-        required: true
-    },
-    email: {
-        type: String,
-        required: true,
-        unique: true
-    },
-    password: {
-        type: String,
-        required: true
-    },
-    role: {
-        type: String,
-        enum: ['ADMIN_ROLE', 'USER_ROLE'], 
-        default: 'USER_ROLE' 
-    },
-    estado: {
-        type: Boolean,
-        default: true 
-    }
-});
+const UserSchema = new mongoose.Schema({
+  username: {
+    type: String,
+    required: [true, 'El nombre de usuario es obligatorio'],
+    unique: true
+  },
+  email: {
+    type: String,
+    required: [true, 'El email es obligatorio'],
+    unique: true
+  },
+  password: {
+    type: String,
+    required: [true, 'La contraseña es obligatoria']
+  },
+  status: {
+    type: Boolean,
+    default: true
+  },
+  role: {
+    type: String,
+    enum: ['ADMIN_ROLE', 'USER_ROLE', 'VENTAS_ROLE'],
+    default: 'USER_ROLE'
+  }
+}, { timestamps: true });
 
-export default mongoose.model('User', userSchema);
+export const User = mongoose.model('User', UserSchema);

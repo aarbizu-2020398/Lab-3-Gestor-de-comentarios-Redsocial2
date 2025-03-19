@@ -7,131 +7,22 @@
 	},
 	"item": [
 		{
-			"name": "Agregar Publicacion",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "x-token",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YmY1MmI4YzhmZTdmMDUxNjM4MjVhNyIsInJvbGUiOiJBRE1JTl9ST0xFIiwiaWF0IjoxNzQwNTkyMTgxLCJleHAiOjE3NDA1OTU3ODF9.Ircae5WvB8KGCz_tNIjotROqF0LP4tkhTobn7kexaCU",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"\":\"\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:3040/gestor-opiniones/v1/post/register",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3040",
-					"path": [
-						"gestor-opiniones",
-						"v1",
-						"post",
-						"register"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Eliminar Publicacion",
-			"request": {
-				"method": "DELETE",
-				"header": [
-					{
-						"key": "x-token",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YmY1MmI4YzhmZTdmMDUxNjM4MjVhNyIsInJvbGUiOiJBRE1JTl9ST0xFIiwiaWF0IjoxNzQwNTkyMTgxLCJleHAiOjE3NDA1OTU3ODF9.Ircae5WvB8KGCz_tNIjotROqF0LP4tkhTobn7kexaCU",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:3040/gestor-opiniones/v1/publicaciones/65f4e8b2c23d4f5e8e4f1a9b\n",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3040",
-					"path": [
-						"gestor-opiniones",
-						"v1",
-						"publicaciones",
-						"65f4e8b2c23d4f5e8e4f1a9b\n"
-					],
-					"query": [
-						{
-							"key": "",
-							"value": null,
-							"disabled": true
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "Editar Publicacion",
 			"request": {
+				"auth": {
+					"type": "noauth"
+				},
 				"method": "PUT",
 				"header": [
 					{
 						"key": "x-token",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YmU4OTU2MjU5ZmNlOGM1NjM1ZDNlYSIsInJvbGUiOiJBRE1JTl9ST0xFIiwiaWF0IjoxNzQwNTQwMjU3LCJleHAiOjE3NDA1NDM4NTd9.Nda2GKygkEGKSJr0GuKGTlHJWlULTUR37P_t_r8nf9I",
-						"type": "text"
-					}
-				],
-				"url": {
-					"raw": "http://localhost:3040/gestor-opiniones/v1/publicaciones/65f4e8b2c23d4f5e8e4f1a9b\n",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3040",
-					"path": [
-						"gestor-opiniones",
-						"v1",
-						"publicaciones",
-						"65f4e8b2c23d4f5e8e4f1a9b\n"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Listar Publicacion",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "x-token",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YmY1MmI4YzhmZTdmMDUxNjM4MjVhNyIsInJvbGUiOiJBRE1JTl9ST0xFIiwiaWF0IjoxNzQwNTkyMTgxLCJleHAiOjE3NDA1OTU3ODF9.Ircae5WvB8KGCz_tNIjotROqF0LP4tkhTobn7kexaCU",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZGExOWI5NzIxN2I0YzhiODU1ODQ4OSIsImlhdCI6MTc0MjM0NjY5MiwiZXhwIjoxNzQyOTUxNDkyfQ.Oo9I_YkiHBtdHWQRb8kikU0xB06v40WvVFVwWwLMP_8",
 						"type": "text"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "",
+					"raw": "{\r\n    \"titulo\": \"Avances de los Aviones\",\r\n    \"contenido\": \"La inteligencia artificial está evolucionando rápidamente.\",\r\n    \"categoria\": \"67da1b72be2b63ba44c5d54f\"\r\n}\r\n",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -139,16 +30,17 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3040/gestor-opiniones/v1/publicaciones",
+					"raw": "http://localhost:3060/gestor-opiniones/v1/publicaciones/67da128ef32e206f44df93ca",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "3040",
+					"port": "3060",
 					"path": [
 						"gestor-opiniones",
 						"v1",
-						"publicaciones"
+						"publicaciones",
+						"67da128ef32e206f44df93ca"
 					]
 				}
 			},
@@ -183,6 +75,123 @@
 							"key": "id",
 							"value": "65f4e8b2c23d4f5e8e4f1a9b\n"
 						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Agregar Publicacion",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZGExOWI5NzIxN2I0YzhiODU1ODQ4OSIsImlhdCI6MTc0MjM0NjY5MiwiZXhwIjoxNzQyOTUxNDkyfQ.Oo9I_YkiHBtdHWQRb8kikU0xB06v40WvVFVwWwLMP_8",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"titulo\": \"Avances en Los Montañas\",\r\n    \"contenido\": \"Amatitlan ha sobresalido\",\r\n    \"categoria\": \"65f4e8b2c23d4f5e8e4f1a9c\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3060/gestor-opiniones/v1/publicaciones/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3060",
+					"path": [
+						"gestor-opiniones",
+						"v1",
+						"publicaciones",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar Publicacion",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZGExOWI5NzIxN2I0YzhiODU1ODQ4OSIsImlhdCI6MTc0MjM0NjY5MiwiZXhwIjoxNzQyOTUxNDkyfQ.Oo9I_YkiHBtdHWQRb8kikU0xB06v40WvVFVwWwLMP_8",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3060/gestor-opiniones/v1/publicaciones/67da19f47217b4c8b8558490",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3060",
+					"path": [
+						"gestor-opiniones",
+						"v1",
+						"publicaciones",
+						"67da19f47217b4c8b8558490"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar Publicacion",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZGExOWI5NzIxN2I0YzhiODU1ODQ4OSIsImlhdCI6MTc0MjM0NjY5MiwiZXhwIjoxNzQyOTUxNDkyfQ.Oo9I_YkiHBtdHWQRb8kikU0xB06v40WvVFVwWwLMP_8",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3060/gestor-opiniones/v1/publicaciones",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3060",
+					"path": [
+						"gestor-opiniones",
+						"v1",
+						"publicaciones"
 					]
 				}
 			},

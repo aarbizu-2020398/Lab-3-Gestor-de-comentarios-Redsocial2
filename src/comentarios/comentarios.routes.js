@@ -1,55 +1,64 @@
 import { Router } from 'express';
 import { check } from 'express-validator';
-import { crearComentario, obtenerComentarios, editarComentario, eliminarComentario} from '../comentarios/comentarios.controller.js';
-import { validarCampos } from '../middlewares/validar-campos.js';
+import { crearComentario, obtenerComentarios, obtenerComentariosPorPublicacion, editarComentario, eliminarComentario } from './comentarios.controller.js';
 import { validarJWT } from '../middlewares/validar-jwt.js';
-import { existePublicacionById, existeComentarioById } from '../helpers/db-validator.js';
+import { validarCampos } from '../middlewares/validar-campos.js';
 
 const router = Router();
 
-router.get(
-    '/:id',  
-    [
-        validarJWT,
-        check('publicacionId', 'No es un ID válido').isMongoId(),
-        check('publicacionId').custom(existePublicacionById),
-        validarCampos
-    ],
-    obtenerComentarios
-);
 
 router.post(
     '/',
     [
         validarJWT,
-        check('publicacionId', 'No es un ID válido').isMongoId(),
         check('contenido', 'El contenido del comentario es obligatorio').not().isEmpty(),
+        check('publicacion', 'El ID de la publicación es obligatorio').not().isEmpty().isMongoId(),
         validarCampos
     ],
     crearComentario
 );
 
+router.get(
+    '/',
+    [
+        validarJWT, 
+        validarCampos 
+    ],
+    obtenerComentarios 
+);
+
+
+
+router.get(
+    '/publicacion/:id',
+    [
+        validarJWT, 
+        check('id', 'El ID de la publicación es obligatorio').not().isEmpty().isMongoId(), 
+        validarCampos 
+    ],
+    obtenerComentariosPorPublicacion 
+);
+
 router.put(
     '/:id',
     [
-        validarJWT,
-        check('id', 'No es un ID válido').isMongoId(),
-        check('id').custom(existeComentarioById),
-        check('contenido', 'El contenido del comentario es obligatorio').not().isEmpty(),
-        validarCampos
+        validarJWT, 
+        check('id', 'El ID del comentario es obligatorio').isMongoId(), 
+        check('contenido', 'El contenido es obligatorio').not().isEmpty(), 
+        validarCampos 
     ],
-    editarComentario
+    editarComentario 
 );
+
 
 router.delete(
     '/:id',
     [
-        validarJWT,
-        check('id', 'No es un ID válido').isMongoId(),
-        check('id').custom(existeComentarioById),
-        validarCampos
+        validarJWT, 
+        check('id', 'El ID del comentario es obligatorio').isMongoId(), 
+        validarCampos 
     ],
-    eliminarComentario
+    eliminarComentario 
 );
 
 export default router;

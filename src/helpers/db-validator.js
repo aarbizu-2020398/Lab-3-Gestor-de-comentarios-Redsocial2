@@ -24,3 +24,12 @@ export const existeCategoriaById = async (id = '') => {
         throw new Error(`La categoría con el ID ${id} no existe`);
     }
 };
+
+
+export const existeUsuarioById = async (id = '') => {
+  const usuario = await User.findById(id);
+  if (!usuario) {
+    throw new Error(`El usuario con el ID ${id} no existe`);
+  }
+};
+
