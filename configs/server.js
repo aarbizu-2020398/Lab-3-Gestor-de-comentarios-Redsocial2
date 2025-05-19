@@ -1,19 +1,14 @@
+'use strict';
+
 import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
 import morgan from 'morgan';
-import { dbConnection } from '../configs/mongo.js';  
-import { limiter } from '../src/middlewares/validar-cant-peticiones.js';
-
-import dotenv from 'dotenv';
-dotenv.config();
-
-import authRoutes from '../src/auth/auth.routes.js';
-import postRoutes from '../src/publicaciones/publicaciones.routes.js'; 
-import comentarioRoutes from '../src/comentarios/comentarios.routes.js';
-import categoriaRoutes from '../src/categories/categorias.routes.js';
-import usersRoutes from '../src/users/user.routes.js'
-import { createDefaultUsers } from '../src/users/user.controller.js'; 
+import { dbConnection } from './mongo.js';
+import limiter from '../src/middlewares/validar-cant-peticiones.js';
+import categoryRoutes    from '../src/categories/category.routes.js';
+import publicationRoutes from '../src/publications/publication.routes.js';
+import commentRoutes     from '../src/comments/comments.routes.js';
 
 const middlewares = (app) => {
     app.use(express.urlencoded({ extended: false }));
@@ -22,43 +17,36 @@ const middlewares = (app) => {
     app.use(helmet());
     app.use(morgan('dev'));
     app.use(limiter);
-};
+}
 
-const routes = (app) => {
-    app.use("/gestor-opiniones/v1/auth", authRoutes);
-    app.use("/gestor-opiniones/v1/publicaciones", postRoutes); 
-    app.use('/gestor-opiniones/v1/comments', comentarioRoutes);
-    app.use("/gestor-opiniones/v1/categories", categoriaRoutes);
-    app.use("/gestor-opiniones/v1/users", usersRoutes);
-};
-
+const routes = (app) =>{
+app.use('/Blog/categories', categoryRoutes);
+app.use('/Blog/publications', publicationRoutes);
+app.use('/Blog/publications/:pubId/comments', commentRoutes);
+}
 
 const conectarDB = async () => {
-    try {
+    try{
         await dbConnection();
-        console.log(" Conexión a la base de datos exitosa");
-
-
-        await createDefaultUsers();
-    } catch (error) {
-        console.error(" Error conectando a la base de datos:", error);
-        process.exit(1); 
+        console.log("Conexion a la base de datos exitosa");
+    }catch(error){
+        console.error('Error Conectando a la base de datos', error);
+        process.exit(1);
     }
-};
+}
 
-export const initServer = async () => {
+export const initServer = async () =>{
     const app = express();
-    const port = process.env.PORT || 3060;
+    const port = process.env.PORT || 3000;
 
     try {
         middlewares(app);
-        await conectarDB(); 
+        conectarDB();
         routes(app);
+        app.listen(port);
+        console.log(`Server running on port:  ${port}`)
 
-        app.listen(port, () => {
-            console.log(` Server running on port: ${port}`);
-        });
     } catch (err) {
-        console.error(" Server init failed:", err);
+        console.log(`Server init fail : ${err}`)
     }
-};
+}
