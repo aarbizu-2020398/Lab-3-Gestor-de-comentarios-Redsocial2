@@ -1,0 +1,42 @@
+[{
+  "_id": {
+    "$oid": "682aa05563520c3a68f8f3b5"
+  },
+  "title": "Superman sin capa",
+  "description": "Descripción actualizada",
+  "course": {
+    "$oid": "682a9f9563520c3a68f8f3ac"
+  },
+  "date": {
+    "$date": "2025-05-19T03:07:01.715Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "682ab5948be8caa055ec57a2"
+  },
+  "title": "Principios de Tecnologia",
+  "description": "Desarrollo de IA",
+  "course": {
+    "$oid": "682ab55d8be8caa055ec57a0"
+  },
+  "date": {
+    "$date": "2025-05-19T04:37:40.952Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "682ab5ac8be8caa055ec57a5"
+  },
+  "title": "Principios de Tecnologia",
+  "description": "Desarrollo de APIS",
+  "course": {
+    "$oid": "682ab55d8be8caa055ec57a0"
+  },
+  "date": {
+    "$date": "2025-05-19T04:38:04.985Z"
+  },
+  "__v": 0
+}]

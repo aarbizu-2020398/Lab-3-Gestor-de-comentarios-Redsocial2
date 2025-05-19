@@ -1,0 +1,56 @@
+[{
+  "_id": {
+    "$oid": "682aa19e63520c3a68f8f3c0"
+  },
+  "publication": {
+    "$oid": "682aa05563520c3a68f8f3b5"
+  },
+  "author": "Esteban",
+  "content": "Esta carreando",
+  "date": {
+    "$date": "2025-05-19T03:12:30.635Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "682ab38e8be8caa055ec5784"
+  },
+  "publication": {
+    "$oid": "682aa05563520c3a68f8f3b5"
+  },
+  "author": "Adrian",
+  "content": "Hola",
+  "date": {
+    "$date": "2025-05-19T04:29:02.756Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "682ab5f58be8caa055ec57b5"
+  },
+  "publication": {
+    "$oid": "682ab5948be8caa055ec57a2"
+  },
+  "author": "Diego",
+  "content": "Buena tarea",
+  "date": {
+    "$date": "2025-05-19T04:39:17.810Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "682ab6118be8caa055ec57cf"
+  },
+  "publication": {
+    "$oid": "682ab5ac8be8caa055ec57a5"
+  },
+  "author": "Andres",
+  "content": "Terminado",
+  "date": {
+    "$date": "2025-05-19T04:39:45.578Z"
+  },
+  "__v": 0
+}]
